@@ -7,7 +7,7 @@ import WarningBanner from "@/components/WarningBanners";
 
 
 export const metadata: Metadata = {
-  title: "Airdrop | Claim Your Exclusive NFT",
+  title: "Airdrop | Claim Exclusive NFT",
   description: "Claim your exclusive NFT airdrop on Sepolia testnet. Connect your wallet and participate in the drop.",
 };
 
@@ -67,7 +67,7 @@ export default function Home() {
         {/* Footer */}
         <footer className="mt-8 text-center">
           <p className="font-body text-xs text-muted-foreground/60">
-            Powered by Web3 • Built with ♥
+           Built by Thein Soe
           </p>
         </footer>
       </div>
