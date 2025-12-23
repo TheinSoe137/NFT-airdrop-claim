@@ -1,65 +1,76 @@
-import Image from "next/image";
+
+import type { Metadata } from "next";
+import NFTCard from "@/components/NFTCard";
+import WalletButton from "@/components/WalletButton";
+import ClaimButton from "@/components/ClaimButton";
+import WarningBanner from "@/components/WarningBanners";
+
+
+export const metadata: Metadata = {
+  title: "Airdrop | Claim Your Exclusive NFT",
+  description: "Claim your exclusive NFT airdrop on Sepolia testnet. Connect your wallet and participate in the drop.",
+};
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="relative min-h-screen overflow-hidden">
+      {/* Background effects */}
+      <div className="fixed inset-0 -z-10">
+        {/* Gradient orbs */}
+        <div className="absolute top-1/4 -left-32 h-96 w-96 rounded-full bg-neon-cyan/20 blur-[100px] animate-pulse" />
+        <div 
+          className="absolute bottom-1/4 -right-32 h-96 w-96 rounded-full bg-neon-purple/20 blur-[100px] animate-pulse" 
+          style={{ animationDelay: '1s' }} 
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-neon-pink/10 blur-[150px]" />
+        
+        {/* Grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: 'linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="container flex min-h-screen flex-col items-center justify-center gap-8 px-4 py-12">
+        {/* Header */}
+        <header className="text-center space-y-4">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight">
+            <span className="text-foreground">Claim Your </span>
+            <span className="neon-text text-primary">Airdrop</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="font-body text-lg text-muted-foreground max-w-md mx-auto">
+            Exclusive limited edition NFT drop. Connect your wallet and claim now.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </header>
+
+        {/* Connect Wallet */}
+        <WalletButton />
+
+        {/* NFT Card */}
+        <NFTCard
+          title="Airdrop Claim Testing"
+          subtitle="The first of its kind. A unique digital artifact from the void."
+          price="0.001"
+          currency="ETH"
+        />
+
+        {/* Claim Button */}
+        <ClaimButton price="0.001" currency="Seoplia_ETH" />
+
+        {/* Warnings */}
+        <WarningBanner />
+
+        {/* Footer */}
+        <footer className="mt-8 text-center">
+          <p className="font-body text-xs text-muted-foreground/60">
+            Powered by Web3 • Built with ♥
+          </p>
+        </footer>
+      </div>
+    </main>
   );
 }
